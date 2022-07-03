@@ -24,6 +24,9 @@ touch ssh
 
 read -rp "Enter bacon wifi password: " PSK
 
+# hash password
+PSK="$(echo -n "$PSK" | iconv -t UTF-16LE | openssl md4)"
+
 # setup wifi
 tee wpa_supplicant.conf > /dev/null <<EOF
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -32,6 +35,6 @@ country=AU
 
 network={
   ssid="bacon"
-  psk="${PSK}"
+  psk="hash:${PSK}"
 }
 EOF
