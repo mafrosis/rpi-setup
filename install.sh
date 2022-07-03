@@ -1,7 +1,11 @@
 #! /bin/bash -e
 
+if [[ ${PWD##*/} != 'boot' ]]; then
+	echo 'Current directory is not /boot!'
+fi
+
 if [[ ! -f config.txt ]]; then
-	echo 'File config.txt missing from current directory!'
+	echo 'File config.txt missing'
 fi
 
 # enable digione DAC
