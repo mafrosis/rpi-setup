@@ -8,6 +8,14 @@ if [[ ! -f config.txt ]]; then
 	echo 'File config.txt missing'
 fi
 
+read -rp "Enter pi user password: " PASS
+
+# hash password
+PASS="$(echo -n "$PASS" | /opt/homebrew/opt/openssl/bin/openssl passwd -6 -stdin)"
+
+# set default user/pass
+echo "pi:${PASS}" > userconf.txt
+
 # enable digione DAC
 echo 'dtoverlay=allo-digione' >> config.txt
 
