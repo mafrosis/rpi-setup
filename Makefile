@@ -4,4 +4,4 @@ install: clean
 
 .PHONY: clean
 clean:
-	rm -f wpa_supplicant.conf userconf.txt config.txt ssh
+	rm -f wpa_supplicant.conf userconf.txt ssh
