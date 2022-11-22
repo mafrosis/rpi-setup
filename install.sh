@@ -14,11 +14,6 @@ PASS="$(echo -n "$PASS" | /opt/homebrew/opt/openssl/bin/openssl passwd -6 -stdin
 # set default user/pass
 echo "pi:${PASS}" > userconf.txt
 
-# enable digione DAC
-if ! grep -q allo /Volumes/boot/config.txt; then
-	echo 'dtoverlay=allo-digione' >> config.txt
-fi
-
 # setup sshd
 touch ssh
 
