@@ -1,6 +1,13 @@
 #! /bin/bash -e
 
-cd /Volumes/boot
+if [[ -d /Volumes/boot ]]; then
+	cd /Volumes/boot
+elif [[ -d /Volumes/bootfs ]]; then 
+	cd /Volumes/bootfs
+else
+	echo 'Raspberry boot volume not mounted'
+	exit 1
+fi
 
 if [[ ! -f config.txt ]]; then
 	echo 'File config.txt missing'
